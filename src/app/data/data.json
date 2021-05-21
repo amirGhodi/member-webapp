@@ -1,0 +1,44 @@
+{
+    "email": "amir@gmail.com",
+    "password": "@Amir1234",
+    "username": "Amir Ghodi",
+    "data" : [
+        {
+            "ID" : "STS123",
+            "_id": 1,
+            "Name": "Amir",
+            "section" : {
+                "first": true,
+                "second": false,
+                "third": false,
+                "fourth": true
+            },
+            "Join_Date": "Tue Feb 02 2016 00:00:00 GMT+0530 (India Standard Time)",
+            "Status": true
+        },{
+            "ID" : "STS124",
+            "_id": 2,
+            "Name": "Amir ghodi",
+            "section" : {
+                "first": false,
+                "second": false,
+                "third": true,
+                "fourth": false
+            },
+            "Join_Date": "Wed Nov 11 2009 00:00:00 GMT+0530 (India Standard Time)",
+            "Status": false
+        },{
+            "ID" : "STS125",
+            "_id":3,
+            "Name": "Amir A Ghodi",
+            "section" : {
+                "first": false,
+                "second": false,
+                "third": false,
+                "fourth": true
+            },
+            "Join_Date": "Thu Mar 05 2015 00:00:00 GMT+0530 (India Standard Time)",
+            "Status": true
+        }
+    ]
+}

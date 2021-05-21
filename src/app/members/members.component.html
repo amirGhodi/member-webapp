@@ -1,0 +1,183 @@
+<div>
+    <div class="col-md-12 col-sm-12 col-xs-12 row first-block nav">
+        <div class="col-md-1 col-sm-1 col-xs-1">
+            
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2" >
+            Admin Section
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1" >
+            <a [routerLink]="['/member']" [routerLinkActive]="['active-route']">Member</a>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1" >
+            <a [routerLink]="['/product']" [routerLinkActive]="['active-route']">Products</a>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1" >
+            <a [routerLink]="['/report']" [routerLinkActive]="['active-route']">Reporting</a>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1" >
+            <a [routerLink]="['/users']" [routerLinkActive]="['active-route']">Users</a>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1">
+            {{username}}
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1">
+            <button type="button" class="btn btn-secondary" (click)="logout()">Logout</button>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1">
+        </div>
+    </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div>
+            <button class="btn btn-block bg-primary text-white" (click)="addMember()">Create new member</button>&nbsp;&nbsp;
+        </div>
+        <br>
+
+
+        <div class="col-md-12 col-sm-12 col-xs-12 row" *ngIf="!showList">
+            <div class="col-md-8 col-sm-8 col-xs-8 offset-md-2 offset-xs-0">
+                <form #form="ngForm" novalidate>
+                  <div class="card">
+                    <div class="card-body form-body">
+                    <div class="input-containers">
+                            <label class="labels">ID: </label><br>
+                            <input type="text" [(ngModel)]="memberID" #ngModel #mid="ngModel" name="mid"
+                              placeholder="Enter member ID" required>
+                            <div class="text-danger font-weight-bold" *ngIf="mid.invalid && form.submitted || mid.touched ">
+                              <p *ngIf="mid.errors?.required">
+                                *Name is required.
+                              </p>
+                            </div>
+                          </div>
+                      <div class="input-containers">
+                        <label class="labels">Name: </label><br>
+                        <input type="text" [(ngModel)]="fname" pattern="^[a-zA-Z ]*$" #ngModel #uname="ngModel" name="uname"
+                          placeholder="Enter your Username" required>
+                        <div class="text-danger font-weight-bold" *ngIf="uname.invalid && form.submitted || uname.touched ">
+                          <p *ngIf="uname.errors?.required">
+                            *Name is required.
+                          </p>
+                          <p *ngIf="uname.errors?.pattern">
+                            *Enter a valid name
+                        </p>
+                        </div>
+                      </div>
+                      <div class="input-containers">
+                            <label class="labels">Join Date</label><br>
+                              <mat-form-field>
+                                <input matInput [matDatepicker]="picker" name="date" [readonly]="true" [max]="current" placeholder="select Date" #jdate="ngModel" [(ngModel)]="joinDate" required>
+                                <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                             </mat-form-field>
+                             <div class="error-msg" *ngIf="jdate.invalid && jdate.touched || jdate.invalid && jdate.submitted">
+                                <p *ngIf="jdate.errors.required">
+                                    Please select Date of Joining
+                                </p>
+                            </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Status</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="status" name="status" [(ngModel)]="statusCheck"> Active
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Section</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="one" name="one" [(ngModel)]="first"> First
+                        </div>
+                        <div>
+                            <input type="checkbox" id="two" name="two" [(ngModel)]="second"> Second
+                        </div>
+                        <div>
+                            <input type="checkbox" id="three" name="three" [(ngModel)]="third"> Third
+                        </div>
+                        <div>
+                            <input type="checkbox" id="four" name="four" [(ngModel)]="fourth"> Fourth
+                        </div>
+                    </div>
+
+                      <br>
+                      <button class="btn btn-block bg-primary text-white" *ngIf="!update" (click)="submit(form)">Add</button>
+                      <button class="btn btn-block bg-primary text-white" *ngIf="update" (click)="submit(form)">Update</button>
+                      <button class="btn btn-block bg-primary text-white" (click)="cancel(form)" >Cancel</button>
+                      <br>
+                      <br>
+        
+                    </div>
+                  </div>
+                </form>
+              </div>
+        </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="showList === true && dataExist === true">
+        <span class="text-menber">
+            <h1>Member List</h1>
+        </span>
+        <div class="col-md-12 col-sm-12 col-xs-12 row">
+        <div class="col-md-1 col-sm-1 col-xs-1">
+        </div>
+        <div class="col-md-10 col-sm-10 col-xs-10">
+        <table border="1px" class="col-md-12 col-sm-12 col-xs-12 display-list">
+            <tr>
+                <th rowspan="2">ID</th>
+                <th rowspan="2">Name</th>
+                <th colspan="4">Section</th>
+                <th rowspan="2">Join Date</th>
+                <th rowspan="2">Status</th>
+                <th rowspan="2">Action</th>
+            </tr>
+            <tr>
+                <th>1st</th>
+                <th>2nd</th>
+                <th>3rd</th>
+                <th>4th</th>
+            </tr>
+            <tr *ngFor="let data of memberData">
+                <td>{{data.ID}}</td>
+                <td>{{data.Name}}</td>
+                <td>
+                    <span *ngIf="data.section.first === false">0</span>
+                    <span *ngIf="data.section.first === true">1</span>
+                </td>
+                <td>
+                    <span *ngIf="data.section.second === false">0</span>
+                    <span *ngIf="data.section.second === true">1</span>
+                </td>
+                <td>
+                    <span *ngIf="data.section.third === false">0</span>
+                    <span *ngIf="data.section.third === true">1</span>
+                </td>
+                <td>
+                    <span *ngIf="data.section.fourth === false">0</span>
+                    <span *ngIf="data.section.fourth === true">1</span>
+                </td>
+                <td>{{data.Join_Date}}</td>
+                <td>
+                    <span *ngIf="data.Status === false">Inactive</span>
+                    <span *ngIf="data.Status === true">Active</span>
+                </td>
+                <td>
+                    <span class="action" (click)="edit(data)">Edit</span>&nbsp;&nbsp;
+                    <span class="action" (click)="delete(data)">Delete</span>
+                </td>
+            </tr>
+        </table>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1">
+        </div>
+        </div>
+    </div>
+    <h1 *ngIf="dataExist === false && showList === true">Please add new member !!!</h1>
+</div>

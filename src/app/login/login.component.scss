@@ -1,0 +1,35 @@
+input{
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    width: 80%;
+    border-bottom: solid 0.8px lightgrey;
+    display: block !important;
+}
+input::placeholder{
+    font-size: 15px;
+    padding-left: 10px;
+}
+.input-containers{
+    margin-top: 15px;
+}
+.form-body{
+    box-shadow: 3px 3px 3px 0px lightgrey;
+}
+.labels {
+    font-size: 18px;
+}
+.link-align {
+    text-align: center;
+}
+.hide-pass{
+    position: absolute;
+    right: 23%;
+    font-size: 20px;
+    cursor: pointer;
+}
+input.terms{
+    width: 10px;
+    transform: scale(1.5);
+    position: absolute;
+}

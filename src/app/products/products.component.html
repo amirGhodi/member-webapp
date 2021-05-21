@@ -1,0 +1,33 @@
+<div>
+    <div class="col-md-12 col-sm-12 col-xs-12 row first-block nav">
+        <div class="col-md-1 col-sm-1 col-xs-1">
+            
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2" >
+            Admin Section
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1" >
+            <a [routerLink]="['/member']" [routerLinkActive]="['active-route']">Member</a>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1" >
+            <a [routerLink]="['/product']" [routerLinkActive]="['active-route']">Products</a>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1" >
+            <a [routerLink]="['/report']" [routerLinkActive]="['active-route']">Reporting</a>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1" >
+            <a [routerLink]="['/users']" [routerLinkActive]="['active-route']">Users</a>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1">
+            {{username}}
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1">
+            <button type="button" class="btn btn-secondary" (click)="logout()">Logout</button>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1">
+        </div>
+    </div>
+</div>

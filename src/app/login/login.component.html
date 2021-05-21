@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="container">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h1 class="text-center">
+            User Login
+          </h1>
+        <div class="col-md-8 col-sm-8 col-xs-8 offset-md-2 offset-xs-0">
+          <form #form="ngForm" novalidate>
+            <div class="card register-form">
+              <div class="card-body form-body">
+                <div class="input-containers">
+                  <label class="labels">Email Address: </label><br>
+                  <input type="text" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="userEmail"  #ngModel #email="ngModel" name="email" placeholder="Enter your Email" required>
+                  <div class="text-danger font-weight-bold" *ngIf="email.invalid && form.submitted || email.touched ">
+                      <p *ngIf="email.errors?.required">
+                          *Email address is required.
+                      </p>
+                      <p *ngIf="email.errors?.pattern">
+                          *Enter a valid email address.(<small><b>joe@abc.com</b></small>)
+                      </p>
+                  </div>  
+              </div>
+                <div class="input-containers">
+                  <label class="labels">Password: </label><br>
+                  <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,}$" name="password" [(ngModel)]="userPassword"  #ngModel #password="ngModel"
+                    placeholder="Enter your password"  required>
+                    <div class="text-danger font-weight-bold" *ngIf="password.invalid && form.submitted || password.touched ">
+                      <p *ngIf="password.errors?.required">
+                          *Password is required.
+                      </p>
+                      <p *ngIf="password.errors?.pattern">
+                        *Enter a valid password
+                    </p>
+                  </div> 
+                </div>
+                <br>
+                <button class="btn btn-block bg-primary text-white" (click)="submit(form)" >Login</button>
+                <br>
+                <br>                
+                
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
